@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0 20px;
+}
+h1{
+
+    color: #2c3e50;
+    font-size: 3rem;
+    margin-bottom: 10px;
+
+}
+p{
+    color: #555;
+    font-size: 1.2rem;
+}
+.container{
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+nav {
+    margin: 0;
+    text-align: right;
+    background-color: #222;
+    padding: 10px 20px;
+}
+
+nav a{
+    color: white;
+    margin-left: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: #00bcd4;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    background: #f4f4f9;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+#skills ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    list-style-type: none;
+    padding: 0;
+
+}
+#skills li{
+    background: #f4f4f4;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #333;
+    transition: 0.3s;
+}
+
+#skills li:hover{
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+}
+.projects{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+.project-card{
+    background: #fff;
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.project-card:hover{
+    transform: translate(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,2);
+}
+
+#about{
+    text-align: center;
+    max-width: 700px;
+    margin: 50px auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
