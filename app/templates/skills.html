@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="skills">
+    <div class="skill-container">
+        <h2>My Skills</h2>
+
+        <div class="skill-category">
+            {% for cat in categories %}
+            <h3>{{ cat.name }}</h3>
+            <ul>
+                {% for s in cat.skills %}
+                <li>{{s.name}}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

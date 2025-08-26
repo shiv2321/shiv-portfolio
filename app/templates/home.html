@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="hero">
+    <h1 id="home-head">Hello, I am Shivkumar</h1>
+    <p class="para-head">Aspiring Software Developer</p>
+    <a id="resume_download" href="/static/shiv_resume.pdf" class="cta-btn" target="_blank">Download Resume</a>
+</header>
+
+<section id="hero-sec">
+    <div class="about-para">
+        <h2>Welcome!</h2>
+        <p id="test">
+            I'm a Python developer passionate about backend systems, APIs, and web applications. 
+            Hands-on with firewalls, networking (Linux, CentOS, SNMP, syslog), and IDS/IPS integration (Snort). 
+            Experienced with FastAPI, Django, SQL, authentication, and REST APIs.
+        </p>
+        <p>
+            Currently sharpening my skills in <strong>JavaScript</strong>, 
+            <strong>System Design</strong>, and <strong>Frontend Development</strong> 
+            to build full end-to-end applications.
+        </p>
+    </div>
+    <div class="cta-buttons">
+        <a href="/projects" class="cta-btn">View My Work</a>
+        <a href="contact.html" class="cta-btn">Contact Me</a>
+    </div>
+</section>
+<script>
+
+    // let downResume = document.getElementById("resume_download");
+    // console.log(downResume)
+    // const handleDownloader = (event) => {
+    //     console.log("Called handleDownloader")
+    //     document.querySelector("#resume_download").textContent = "Resume being Downloaded";
+    // };
+    // downResume.addEventListener('click',handleDownloader);
+
+</script>
+{% endblock %}

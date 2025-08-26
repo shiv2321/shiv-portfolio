@@ -1,0 +1,101 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* NAVBAR */
+#navbar {
+    margin: 0;
+    padding: 15px 30px;
+    display: flexbox;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 30px; /* spacing between links */
+    background-color: #958025;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#navbar a:hover {
+    color: #00bcd4;
+}
+
+/* HERO SECTION */
+.hero {
+    padding: 60px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* stack text & button */
+    justify-content: center;
+    align-items: center;
+    background-color: darkgray;
+    font-family: sans-serif;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+.cta-btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    background-color: #00bcd4;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #008ba3;
+}
+
+/* HERO-SEC */
+#hero-sec {
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* stack text & button for now */
+    gap: 20px;
+    max-width: 800px;
+}
+
+.about-page{
+    max-width: 70%;
+    margin: 20% auto;
+    padding: 5%;
+    background-color: #f9f9f9;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+}
+.about-head{
+    text-align: center;
+    color: #333;
+}
+
+.skill-container{
+    max-width: 70%;
+    margin: 10% auto;
+    border-radius: 5%;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
