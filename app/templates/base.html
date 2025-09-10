@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <button id="toggle-nav">☰ Menu</button>
     <nav id="navbar">
         <ul>
             <li><a href="/">Home</a></li>
@@ -24,4 +25,40 @@
         {% block content %}
         {% endblock %}
     </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("toggle-nav");
+            const navbar = document.getElementById("navbar");
+
+            toggleBtn.addEventListener("click", () => {
+                navbar.classList.toggle("open");
+
+                if (navbar.classList.contains("open")) {
+                    toggleBtn.textContent = "✖ Close";
+                } else {
+                    toggleBtn.textContent = "☰ Menu";
+                }
+            });
+
+            // Optional: close nav when a link is clicked
+            navbar.addEventListener("click", (e) => {
+                if (e.target.tagName === "A") {
+                    navbar.classList.remove("open");
+                    toggleBtn.textContent = "☰ Menu";
+                }
+            });
+            const downloadSpan = document.getElementById("downloads");
+            const resumeLink = document.getElementById("resume_download");
+            if (resumeLink && downloadSpan){
+                resumeLink.addEventListener("click", ()=>{
+                    setTimeout(async ()=>{
+                        const res = await fetch("/counter");
+                        const data = await res.json();
+                        downloadSpan.textContent = `Resume Download: ${data.counter}`
+                    }, 500);
+                });
+            }
+        });
+        
+    </script>
 </body>

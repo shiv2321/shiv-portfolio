@@ -3,19 +3,18 @@
 <section class="skills">
     <div class="skill-container">
         <h2>My Skills</h2>
-
-        <div class="skill-category">
-            {% for cat in categories %}
-            <h3>{{ cat.name }}</h3>
-            <ul>
-                {% for s in cat.skills %}
-                <li>{{s.name}}</li>
-                {% endfor %}
-            </ul>
+        <div class="skill-categories">
+            {% for cat_name, skills in categories.items() %}
+            <div class="skill-category">
+                <h3>{{ cat_name }}:</h3>
+                <ul>
+                    {% for s in skills %}
+                    <li>{{ s }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
             {% endfor %}
         </div>
     </div>
-</section>
-
-
 {% endblock %}

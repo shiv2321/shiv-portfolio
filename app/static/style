@@ -94,4 +94,29 @@
     line-height: 1.6rem;
     
 }
+        <div class="skill-category">
+            <h3>Databases</h3>
+            <ul>
+                <li>SQL</li>
+                <li>MySQL (Dockerized setup)</li>
+            </ul>
+        </div>
 
+        <div class="skill-category">
+            <h3>Networking & Security</h3>
+            <ul>
+                <li>Linux (CentOS, Ubuntu)</li>
+                <li>Firewall Systems (GajShield)</li>
+                <li>Syslog, SNMP</li>
+                <li>IDS/IPS (Snort)</li>
+            </ul>
+        </div>
+
+        <div class="skill-category">
+            <h3>Tools & Other</h3>
+            <ul>
+                <li>Git & GitHub</li>
+                <li>Docker (basic usage)</li>
+                <li>System Design (in progress)</li>
+            </ul>
+        </div>

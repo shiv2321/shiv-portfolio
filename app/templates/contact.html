@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="contact">
+    <h2>Contact Me</h2>
+    <form method="post", action="/contact">
+        <label>Name: </label>
+        <input type="text" name="name" required>
+
+        <label>Email: </label>
+        <input type="email" name="email" required>
+
+        <label>Message: </label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+    {% if success %}
+        <p class="success-msg">✅ Thanks {{ name }}, your message was received!</p>
+    {% endif %}
+</section>
+{% endblock %}
