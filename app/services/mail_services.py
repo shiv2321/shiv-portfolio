@@ -1,15 +1,19 @@
+import os
+from dotenv import load_dotenv
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from fastapi import BackgroundTasks
 from pydantic import EmailStr
 
+load_dotenv()
+
 conf = ConnectionConfig(
-    MAIL_USERNAME="hahahe840@gmail.com",
-    MAIL_PASSWORD="zjcg cejd bqlk fegz ",
-    MAIL_FROM="hahahe840@gmail.com",
+    MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
+    MAIL_PASSWORD=os.getenv(""),
+    MAIL_FROM=os.getenv(""),
     MAIL_PORT=587,
-    MAIL_SERVER="smtp.gmail.com",
-    MAIL_STARTTLS=True,
-    MAIL_SSL_TLS=False,
+    MAIL_SERVER=os.getenv("MAIL_SERVER"),
+    MAIL_STARTTLS=os.getenv("MAIL_STARTTLS", "True").lower() == "true",
+    MAIL_SSL_TLS=os.getvenv("MAIL_SSL_TL", "False").lower() == "true",
     USE_CREDENTIALS=True
 )
 
@@ -20,7 +24,7 @@ async def send_contact_email(background_tasks: BackgroundTasks, name: str, email
     """Handles Sending contact from email in the backgrond"""
     msg = MessageSchema(
         subject=f"📩 New Portfolio Contact from {name}",
-        recipients=["hahahe840@gmail.com"],
+        recipients=[os.getenv("MAIL_USERNAME")],
         body=f"Name: {name} \nEmail: {email} \nMessage:{message}",
         subtype="plain"
     )
