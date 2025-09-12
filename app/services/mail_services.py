@@ -1,19 +1,22 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from fastapi import BackgroundTasks
 from pydantic import EmailStr
 
-load_dotenv()
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
 
 conf = ConnectionConfig(
     MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
-    MAIL_PASSWORD=os.getenv(""),
-    MAIL_FROM=os.getenv(""),
+    MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),
+    MAIL_FROM=os.getenv("MAIL_FROM"),
     MAIL_PORT=587,
     MAIL_SERVER=os.getenv("MAIL_SERVER"),
     MAIL_STARTTLS=os.getenv("MAIL_STARTTLS", "True").lower() == "true",
-    MAIL_SSL_TLS=os.getvenv("MAIL_SSL_TL", "False").lower() == "true",
+    MAIL_SSL_TLS=os.getenv("MAIL_SSL_TL", "False").lower() == "true",
     USE_CREDENTIALS=True
 )
 
