@@ -17,3 +17,8 @@ async def get_experience(request:Request,
             "experiences":experiences
         }
     )
+
+@router.get("/api/experience")
+async def get_experience_data(db:Session = Depends(get_db)):
+    experience = db.query(Experience).all()
+    return experience

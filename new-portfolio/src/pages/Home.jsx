@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     Box,
     Container,
@@ -12,6 +12,33 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 
 function Home() {
+    const [downloadCount, setDownloadCount] = useState(0);
+
+    useEffect(()=> {
+        const fetchCount = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/counter');
+                const data = await response.json();
+                setDownloadCount(data.count);
+            } catch (err) {
+                console.error('Failed to fetch download count:', err);
+            }
+        };
+        fetchCount();
+    }, []);
+
+    const handleDownload = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/increase_count', {
+                method:'POST'
+            });
+            const data = await response.json();
+            setDownloadCount(data.count);
+        } catch (err) {
+            console.error('Failed to Increase Count: ',err);
+        }
+    };
+
     return (
         <Container maxW="container.lg" py={12}>
             <VStack
@@ -30,14 +57,15 @@ function Home() {
                 </Text>
                 <Button
                     as="a"
-                    href="/download_resume"
+                    href={"http://127.0.0.1:8000/api/download_resume"}
                     target="_blank"
                     colorScheme="teal"
                     size="lg"
+                    onClick={handleDownload}
                 >
                     Download Resume
                 </Button>
-                <Tag colorScheme="green">Resume Downloads: 0</Tag>
+                <Tag colorScheme="green">Resume Downloads: {downloadCount}</Tag>
             </VStack>
 
             <Box as="section" my={12}>
@@ -52,8 +80,7 @@ function Home() {
                 </Text>
                 <Text fontSize="lg">
                     Currently sharpening my skills in <strong>JavaScript</strong>,
-                    <strong>System Design</strong>, and <strong>Frontend Development</strong>
-                    to build full end-to-end applications.
+                    <strong>System Design</strong>, and <strong>Frontend Development</strong> to build full end-to-end applications.
                 </Text>
             </Box>
             <HStack as="section" justify="center" spacing={8}>

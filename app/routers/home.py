@@ -16,15 +16,8 @@ async def home(request:Request, db: Session = Depends(get_db)):
     record = db.query(ResumeDownloads).first()
     return templates.TemplateResponse("home.html", {"request":request, "counter":record.count if record else 0})
 
-@router.get("/download_resume")
-async def download_resume(db:Session=Depends(get_db)):
-    record = db.query(ResumeDownloads).first()
-    if record:
-        record.count +=1
-    else:
-        record = ResumeDownloads(count = 1)
-        db.add(record)
-    db.commit()
+@router.get("/api/download_resume")
+async def download_resume():
     file_path = os.path.join("app", "static", "shiv_resume.pdf")
     return FileResponse(
         path=file_path,
@@ -33,7 +26,18 @@ async def download_resume(db:Session=Depends(get_db)):
         headers={"Content-Disposition": 'attachment; filename="Shiv_resume.pdf"'}
     )
 
-@router.get("/counter")
+@router.get("/api/counter")
 async def get_counter(db : Session = Depends(get_db)):
     record = db.query(ResumeDownloads).first()
-    return JSONResponse({"counter":record.count if record else 0})
+    return {"count":record.count if record else 0}
+
+@router.post("/api/increase_count")
+async def increseCount(db: Session = Depends(get_db)):
+    record = db.query(ResumeDownloads).first()
+    if record:
+        record.count +=1
+    else:
+        record = ResumeDownloads(count = 1)
+        db.add(record)
+    db.commit()
+    return {"count":record.count}
