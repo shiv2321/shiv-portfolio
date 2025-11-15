@@ -13,14 +13,19 @@ import { Box,
     DrawerBody,
     VStack,
     useDisclosure,
+    useColorMode,
+    Spacer,
 
 } from "@chakra-ui/react";
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 
 function Navbar(){
 
     const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const { colorMode, toggleColorMode} = useColorMode();
+
     const navLinks = [
         { name : 'Home', path : '/' },
         { name : 'Skills', path: '/skills'},
@@ -29,7 +34,11 @@ function Navbar(){
         {name : 'Contact', path : '/contact'}
     ] 
     return (
-        <Box bg="white" boxShadow="sm" px={{ base: 4, md: 8 }} py={4}>
+        <Box bg={colorMode === 'light' ? 'white' : 'gray.800'} 
+            boxShadow="sm" 
+            px={{ base: 4, md: 8 }} 
+            py={4}
+        >
             <Flex
                 alignItems="center"
                 justifyContent="space-between"
@@ -39,6 +48,7 @@ function Navbar(){
                 <Heading as={RouterLink} to="/" size="md" color="teal.600"> 
                     Shivkumar Pujari
                 </Heading>
+                <Spacer display={{base: 'none', md: 'block'}} />
                 <Flex display={{base:'none', md:'flex' }} gap={4}>
                     {navLinks.map((link) => (
                         <Button
@@ -51,14 +61,29 @@ function Navbar(){
                             {link.name}
                         </Button>
                     ))}
+                    <IconButton
+                        ml={4}
+                        onClick={toggleColorMode}
+                        icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                        aria-label="Toggle color mode"
+                        variant="ghost"
+                    />
+                    
                 </Flex>
-
-                <IconButton
-                    aria-label="Open Menu"
-                    icon={<HamburgerIcon/>}
-                    display={{base: 'bock', md:'none'}}
-                    onClick={onOpen}
-                />
+                <Flex display={{base:"flex", md:'none'}}>
+                    <IconButton 
+                        onClick={toggleColorMode}
+                        icon={colorMode === 'light' ? <MoonIcon />:<SunIcon />}
+                        aria-label="toggle color mode"
+                        variant="ghost"
+                    />
+                    <IconButton
+                        aria-label="Open Menu"
+                        icon={<HamburgerIcon/>}
+                        display={{base: 'bock', md:'none'}}
+                        onClick={onOpen}
+                    />
+                </Flex>
             </Flex>
             <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />

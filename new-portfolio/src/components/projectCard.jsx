@@ -22,7 +22,7 @@ function ProjectCard ({title, description, tech_stack}) {
             <CardBody>
                 <Stack spacing="4">
                     <Heading size="md">{title}</Heading> 
-                    <Text color="gray.600">{description}</Text>
+                    <Text>{description}</Text>
                     <HStack spacing={2} wrap="wrap">
                         {tech_stack.map((tech) => (
                             <Tag key={tech} colorScheme="teal" mt={2}>

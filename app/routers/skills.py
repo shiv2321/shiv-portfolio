@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
-from app.data import skills_data
+from data import skills_data
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="templates")
 
 @router.get("/skills")
 async def skills(request:Request):

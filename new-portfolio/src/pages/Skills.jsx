@@ -7,7 +7,8 @@ import {
     SimpleGrid,
     Tag,
     Spinner,
-    HStack
+    HStack,
+    useColorModeValue,
 } from "@chakra-ui/react";
 
 function Skills () {
@@ -16,10 +17,12 @@ function Skills () {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const cardBG = useColorModeValue("white", "gray.700")
+
     useEffect(() => {
         const fetchSkills = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/skills");
+                const response = await fetch("/api/skills");
 
 
                 if (!response.ok) {
@@ -50,7 +53,7 @@ function Skills () {
     if (error) {
         return (
             <Container centerContent py={24}>
-                <Text color="red.500">
+                <Text>
                     Error: {error}
                 </Text>
             </Container>
@@ -67,9 +70,9 @@ function Skills () {
                         p={6}
                         boxShadow="md"
                         borderRadius="lg"
-                        bg="white"
+                        bg={{cardBG}}
                     >
-                        <Heading size="lg" mb={4} color="teal.600">
+                        <Heading size="lg" mb={4}>
                             {categoryName}
                         </Heading>
 

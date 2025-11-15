@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Request, Form, BackgroundTasks
 from fastapi.templating import Jinja2Templates
 from pydantic import EmailStr, BaseModel
-from app.services.mail_services import send_contact_email
+from services.mail_services import send_contact_email
 
 router = APIRouter()
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="templates")
 
 class ContactRequest(BaseModel):
     name: str

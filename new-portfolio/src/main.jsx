@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, RouterProvider } from 'react-router-dom';
-import {ChakraProvider} from '@chakra-ui/react';
-
+import {ChakraProvider, ColorModeScript} from '@chakra-ui/react';
+import theme from './theme.js';
 
 import Layout from './Layout.jsx'
 import Home from './pages/Home.jsx';
@@ -30,9 +30,11 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <ChakraProvider>
-      <RouterProvider router={router} />
+  <>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <ChakraProvider theme={theme}>
+          <RouterProvider router={router} />
     </ChakraProvider>
+  </>,      
 );

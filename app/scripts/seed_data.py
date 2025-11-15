@@ -1,5 +1,5 @@
-from app.db.database import SessionLocal, engine, Base
-from app.models.resume import ResumeDownloads
+from db.database import SessionLocal, engine, Base
+from models.resume import ResumeDownloads
 
 Base.metadata.create_all(bind=engine)
 db = SessionLocal()

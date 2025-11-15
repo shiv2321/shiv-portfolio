@@ -12,7 +12,7 @@ function Projects() {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/projects');
+                const response = await fetch('api/projects');
                 
                 if (!response.ok) {
                     throw new Error('Data could not be fetched!');
@@ -40,7 +40,7 @@ function Projects() {
     if (error) {
         return (
             <Container centerContent py={24}>
-                <Text color="red.500">Error: {error}</Text>
+                <Text>Error: {error}</Text>
             </Container>
         );
     }

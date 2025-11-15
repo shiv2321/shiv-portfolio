@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import skills, home, projects, contact, experience
-from app.db.database import Base, engine
+from routers import skills, home, projects, contact, experience
+from db.database import Base, engine
 
 app = FastAPI()
 
@@ -24,7 +24,7 @@ app.add_middleware(
 )
 
 # Mount static files
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(skills.router)
 app.include_router(home.router)

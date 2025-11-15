@@ -8,16 +8,18 @@ import {
     VStack,
     HStack,
     Tag,
+    useColorModeValue,
 } from '@chakra-ui/react';
 import { Link as RouterLink } from "react-router-dom";
 
 function Home() {
     const [downloadCount, setDownloadCount] = useState(0);
+    const heroBg = useColorModeValue("gray.100", "gray.700")
 
     useEffect(()=> {
         const fetchCount = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/counter');
+                const response = await fetch('/api/counter');
                 const data = await response.json();
                 setDownloadCount(data.count);
             } catch (err) {
@@ -29,7 +31,7 @@ function Home() {
 
     const handleDownload = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/increase_count', {
+            const response = await fetch('/api/increase_count', {
                 method:'POST'
             });
             const data = await response.json();
@@ -45,19 +47,19 @@ function Home() {
                 as="header"
                 textAlign="center"
                 p={{ base: 6, md: 12 }}
-                bg={"gray.100"}
+                bg={{heroBg}}
                 borderRadius="lg"
                 spacing={6}
             >
                 <Heading as="h1" size={{ base: '2xl', md: '3xl' }}>
                     Hello, I am Shivkumar
                 </Heading>
-                <Text fontSize={{ base: 'lg', md: '2xl' }} color="gray.600">
+                <Text fontSize={{ base: 'lg', md: '2xl' }} >
                     Aspiring Software Developer
                 </Text>
                 <Button
                     as="a"
-                    href={"http://127.0.0.1:8000/api/download_resume"}
+                    href={"/api/download_resume"}
                     target="_blank"
                     colorScheme="teal"
                     size="lg"

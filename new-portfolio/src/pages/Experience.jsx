@@ -6,6 +6,7 @@ import {
     VStack,
     Text,
     Spinner,
+    useColorModeValue,
 } from '@chakra-ui/react';
 
 function Experience () {
@@ -13,10 +14,11 @@ function Experience () {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const cardBG = useColorModeValue("white", "gray.700")
     useEffect(() => {
         const fetchExperience = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/experience');
+                const response = await fetch('/api/experience');
                 if (!response.ok) {
                     throw new Error("Experience data could nnot be fetched");
 
@@ -43,7 +45,7 @@ function Experience () {
     if (error) {
         return (
             <Container centerContent py={24}>
-                <Text color="red.500">
+                <Text>
                     Error: {error}
                 </Text>
             </Container>
@@ -58,17 +60,17 @@ function Experience () {
                         key={exp.id}
                         p={6}
                         boxShadow="md"
-                        bg="white"
+                        bg={cardBG}
                         _hover={{boxShadow: 'lg'}}
                         transition="box-shadow 0.2s"
                     >
                         <Heading size="md">
                             {exp.role} @ {exp.company}
                         </Heading>
-                        <Text fontWeight="bold" color="teal.600" mt={2}>
+                        <Text fontWeight="bold" mt={2}>
                             {exp.start_date} - {exp.end_date}
                         </Text>
-                        <Text mt={4} color="gray.700">
+                        <Text mt={4}>
                             {exp.description}
                         </Text>
                     </Box>

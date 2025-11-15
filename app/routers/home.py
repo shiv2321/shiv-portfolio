@@ -3,12 +3,12 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import FileResponse, JSONResponse
 import os
 from sqlalchemy.orm import Session
-from app.db.database import get_db
-from app.models.resume import ResumeDownloads
+from db.database import get_db
+from models.resume import ResumeDownloads
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="templates")
 
 
 @router.get("/")
@@ -18,7 +18,7 @@ async def home(request:Request, db: Session = Depends(get_db)):
 
 @router.get("/api/download_resume")
 async def download_resume():
-    file_path = os.path.join("app", "static", "shiv_resume.pdf")
+    file_path = os.path.join("static", "shiv_resume.pdf")
     return FileResponse(
         path=file_path,
         filename="Shiv_resume.pdf",

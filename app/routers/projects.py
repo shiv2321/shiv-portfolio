@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.data import projects_data
+from data import projects_data
 
 
 

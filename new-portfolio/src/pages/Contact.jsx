@@ -30,7 +30,7 @@ function Contact () {
 
         const formData = {name, email,message };
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/contact', {
+            const response = await fetch('/api/contact', {
                 method:'POST',
                 headers: {
                     'Content-type': 'application/json',
